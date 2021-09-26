@@ -1,6 +1,12 @@
 import React from 'react'
-import Home from "@/pages/Home";
+import {BrowserRouter } from 'react-router-dom'
+import RouterApp from '@/routes/RouteApp'
 
 export default () => {
-    return <Home />
+    return (
+        <BrowserRouter>
+            <RouterApp></RouterApp>
+        </BrowserRouter>
+    )
+    
 }

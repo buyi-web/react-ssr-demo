@@ -9,7 +9,8 @@ const clientConfig = {
     entry: "./src/client",
     output: {
         filename: "js/bundle.[hash:5].js",
-        path: path.resolve(__dirname, "./public")
+        path: path.resolve(__dirname, "./public"),
+        publicPath: '/'
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -30,6 +31,17 @@ const clientConfig = {
                             lessOptions: {
                                 javascriptEnabled: true
                             }
+                        }
+                    }
+                ]
+            },
+            {
+                test:/\.(png|jpe?g|gif)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "img/[name].[hash:5].[ext]"
                         }
                     }
                 ]

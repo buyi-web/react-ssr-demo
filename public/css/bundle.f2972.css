@@ -8,5 +8,15 @@
   color: goldenrod;
 }
 
+/*!**************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/global.less ***!
+  \**************************************************************************************************************************************/
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
 
-/*# sourceMappingURL=bundle.ca27e.css.map*/
+
+/*# sourceMappingURL=bundle.f2972.css.map*/

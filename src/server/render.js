@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom/server";
 import App from './App'
+import '@/global.less';
 import getScripts from './getScripts'
 import getLinks from "./getLinks";
 

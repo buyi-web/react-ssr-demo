@@ -7,7 +7,7 @@ module.exports = {
         alias: {
             "@": path.resolve(__dirname, "src")
         },
-        extensions: [".js", ".jsx", "json", "less"]
+        extensions: [".js", ".jsx", ".less"]
     },
     module: {
         rules: [
@@ -21,8 +21,8 @@ module.exports = {
                             presets: ["@babel/preset-react"]
                         }
                     }
-                ]  
+                ]
             }
         ]
-}
+    }
 }
