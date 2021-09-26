@@ -4,9 +4,11 @@ import App from './App'
 import '@/global.less';
 import getScripts from './getScripts'
 import getLinks from "./getLinks";
+import store from "../store";
 
 export default (req, res) => {
-    const componentHTML = ReactDom.renderToString(<App />);
+    const context = {}
+    const componentHTML = ReactDom.renderToString(<App location={req.path} context={context} />);
     const html = `
     <!DOCTYPE html>
     <html lang="en">

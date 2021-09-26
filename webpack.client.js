@@ -23,8 +23,14 @@ const clientConfig = {
             {
                 test: /\.less$/,
                 use: [
-                    MiniCssExtractPlugin.loader, 
-                    "css-loader", 
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: 'domain',
+                            esModule: false,
+                        }
+                    },
+                    "css-loader",
                     {
                         loader: "less-loader",
                         options: {
@@ -36,7 +42,7 @@ const clientConfig = {
                 ]
             },
             {
-                test:/\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: "file-loader",

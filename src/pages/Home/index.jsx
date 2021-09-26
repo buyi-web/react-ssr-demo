@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.less"
 import imgUrl from '@/assets/images/xidada.jpg'
+import { increase, decrease } from "../../store/actions/counter";
+import { connect } from "react-redux";
 
-export default function () {
-    const [count, setCount] = useState(0)
+function Counter(props) {
+    console.log(props);
+    const { number, onIncrease, onDecrease } = props
     return (
         <div>
-            <h1>home page: <span className="content">{count}</span> </h1>
             <img src={imgUrl} alt="" width="200" />
-            <br/>
-            <button className="btn" onClick={() => { setCount(count + 1) }}>click</button>
+            <p>
+                <button onClick={onDecrease}>减</button>
+                <strong>{number}</strong>
+                <button onClick={onIncrease}>加</button>
+            </p>
         </div>
     )
 }
+
+function mapStateToProps(state) {
+    return { number: state.counter }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onIncrease() {
+            dispatch(increase())
+        },
+        onDecrease() {
+            dispatch(decrease())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)
