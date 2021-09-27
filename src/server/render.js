@@ -4,11 +4,12 @@ import App from './App'
 import '@/global.less';
 import getScripts from './getScripts'
 import getLinks from "./getLinks";
-import store from "../store";
+import makeStore from "../store";
 
 export default (req, res) => {
     const context = {}
-    const componentHTML = ReactDom.renderToString(<App location={req.path} context={context} />);
+    const store = makeStore()
+    const componentHTML = ReactDom.renderToString(<App location={req.path} context={context} store={store} />);
     const html = `
     <!DOCTYPE html>
     <html lang="en">
@@ -23,5 +24,12 @@ export default (req, res) => {
         ${getScripts()}
     </body>
     </html>`;
+    if (context.url) {
+        res.redirect(301, context.url);
+        return;
+    }
+    if(context.resCode){
+        res.status(context.resCode)
+    }
     res.send(html);
 };
